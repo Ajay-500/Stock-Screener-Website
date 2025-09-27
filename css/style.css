@@ -1,0 +1,95 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1a1e2b;
+    color: #e0e0e0;
+}
+.card {
+    background-color: #2c3241;
+    border: 1px solid #3a4153;
+}
+.form-input, .form-select {
+    background-color: #1a1e2b;
+    border: 1px solid #3a4153;
+    color: #e0e0e0;
+}
+.form-input:focus, .form-select:focus {
+    border-color: #00a8ff;
+    box-shadow: 0 0 0 2px rgba(0, 168, 255, 0.5);
+    outline: none;
+}
+.action-button {
+    background-color: #00a8ff;
+    color: #ffffff;
+    font-weight: 600;
+}
+.action-button:hover {
+    background-color: #0095e0;
+}
+.action-button:disabled {
+    background-color: #4a5568;
+    cursor: not-allowed;
+}
+.secondary-button {
+    background-color: #4a5568;
+    color: #ffffff;
+    font-weight: 600;
+}
+.secondary-button:hover {
+    background-color: #2d3748;
+}
+.loader {
+    border-top-color: #00a8ff;
+    animation: spin 1s linear infinite;
+}
+.table-header {
+    background-color: #3a4153;
+}
+.sortable-header {
+    cursor: pointer;
+    user-select: none;
+}
+.sortable-header:hover {
+    color: #ffffff;
+}
+.table-row-hover:hover {
+     background-color: #3a4153;
+}
+.sector-dropdown {
+    position: relative;
+}
+.sector-select-box {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sector-checkboxes {
+    position: absolute;
+    background-color: #2c3241;
+    border: 1px solid #3a4153;
+    border-radius: 0.375rem;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+}
+.sector-checkboxes label {
+    display: block;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.sector-checkboxes label:hover {
+    background-color: #3a4153;
+}
+.sector-checkboxes input {
+    margin-right: 0.5rem;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
