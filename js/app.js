@@ -1,10 +1,8 @@
-// --- GLOBAL STATE ---
 let pyodide = null;
-let pythonChartScript = ''; // To store the fetched python script
+let pythonChartScript = '';
 let currentScreenedList = [];
 let currentSort = { key: 'ticker', direction: 'asc' };
 
-// --- DOM ELEMENTS ---
 const runButton = document.getElementById('run-screener');
 const runButtonText = document.getElementById('run-screener-text');
 const exportButton = document.getElementById('export-csv');
@@ -21,7 +19,6 @@ const chartContainer = document.getElementById('chart-container');
 const chartMetricSelect = document.getElementById('chart-metric');
 const pythonChartContainer = document.getElementById('python-chart-container');
 
-// --- PYTHON CHART GENERATION (MODIFIED) ---
 async function generatePythonChart() {
     if (!pyodide || currentScreenedList.length === 0 || !pythonChartScript) {
         chartContainer.classList.add('hidden');
@@ -34,14 +31,13 @@ async function generatePythonChart() {
     const metric = chartMetricSelect.value;
     const selectedSectors = Array.from(document.querySelectorAll('.sector-checkbox:checked')).map(cb => cb.value);
 
-    // Pass data to Python environment
     pyodide.globals.set("screened_data_json", JSON.stringify(currentScreenedList));
     pyodide.globals.set("full_data_json", JSON.stringify(FTSE250_DATA));
     pyodide.globals.set("metric", metric);
     pyodide.globals.set("selected_sectors", selectedSectors);
 
     try {
-        // Run the external Python script
+
         let base64Image = await pyodide.runPythonAsync(pythonChartScript);
         pythonChartContainer.innerHTML = `<img src="data:image/png;base64,${base64Image}" class="w-full h-full object-contain" alt="Matplotlib chart" />`;
     } catch (error) {
@@ -50,7 +46,7 @@ async function generatePythonChart() {
     }
 }
 
-// --- REGULAR JS FUNCTIONS ---
+
 function updateSectorSelectBoxText() {
     const selectedSectors = Array.from(document.querySelectorAll('.sector-checkbox:checked')).map(cb => cb.value);
     if (selectedSectors.length === 0) {
@@ -179,14 +175,14 @@ function handleSortClick(event) {
     sortAndDisplayResults();
 }
 
-// --- INITIALIZATION & EVENT LISTENERS ---
+
 async function main() {
     try {
-        // Fetch the python script first
+
         const response = await fetch('python/chart.py');
         pythonChartScript = await response.text();
 
-        // Then initialize Pyodide
+
         pyodide = await loadPyodide();
         await pyodide.loadPackage(["pandas", "matplotlib"]);
 
@@ -219,3 +215,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
