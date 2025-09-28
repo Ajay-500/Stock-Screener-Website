@@ -1,4 +1,3 @@
-// --- Pre-generated, consistent dataset for all 250 companies ---
 const FTSE250_DATA = [
     { ticker: "3IN.L", name: "3i Infrastructure", pe: 24.23, pb: 2.14, de: 15.67, roe: 9.8, sector: "Financials" },
     { ticker: "888.L", name: "888 Holdings", pe: 15.88, pb: 1.23, de: 68.41, roe: 18.5, sector: "Consumer Discretionary" },
@@ -234,4 +233,5 @@ const FTSE250_DATA = [
     { ticker: "XPS.L", name: "XPS Pensions Group", pe: 16.32, pb: 2.53, de: 65.32, roe: 28.1, sector: "Financials" },
     { ticker: "ZPG.L", name: "ZPG", pe: 32.32, pb: 3.03, de: 25.32, roe: 9.9, sector: "Technology" }
 ];
+
 
